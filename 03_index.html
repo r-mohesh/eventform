@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
+    <style>
+        @media screen and (max-width: 800px) {
+            .container {
+                width: 100%;
+            }
+            h1{
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"> <br>
+        <h1 class="text-success text-content">EVENT REGISTRATION FORM</h1> <br>
+        <div class="col-lg-8 m-auto d-block">
+            <form action="#" onsubmit="return validation()" class="bg-light">
+                <div class="user-details">
+                    <label for="uname1">Username</label>
+                    <input type="text" name="uname" class="form-control" id="uname1">
+                    <span id="sname1" class="text-danger font-weight-bold"></span>
+                </div>
+                <div class="user-details">
+                    <label for="pass1">Password</label>
+                    <input type="password" name="pass" class="form-control" id="pass1">
+                    <span id="spass1" class="text-danger font-weight-bold"></span>
+                </div>
+                <div class="user-details">
+                    <label for="cnfpass1">Confirm Password</label>
+                    <input type="password" name="cnfpass" class="form-control" id="cnfpass1">
+                    <span id="scnfpass1" class="text-danger font-weight-bold"></span>
+                </div>
+                <div class="user-details">
+                    <label for="mob1">Mobile</label>
+                    <input type="number" name="mob" class="form-control" id="mob1">
+                    <span id="smob1" class="text-danger font-weight-bold"></span>
+                </div>
+                <div class="user-details">
+                    <label for="mail1">Email</label>
+                    <input type="email" name="mail" class="form-control" id="mail1">
+                    <span id="smail1" class="text-danger font-weight-bold"></span>
+                </div> <br>
+                <input type="submit" name="submit1" value="submit" class="btn btn-success">
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function validation() {
+            var user = document.getElementById("uname1").value;
+            var pass = document.getElementById("pass1").value;
+            var cnfpass = document.getElementById("cnfpass1").value;
+            var mobile = document.getElementById("mob1").value;
+            var mail = document.getElementById("mail1").value;
+            if (user == "") {
+                document.getElementById("sname1").innerHTML = "please fill the username field";
+                return false;
+            }
+            if ((user.length <= 2) || (user.length >= 20)) {
+                document.getElementById("sname1").innerHTML = "username length must be between 2 and 20";
+                return false;
+            }
+            if (!isNaN(user)) {
+                document.getElementById("sname1").innerHTML = "Only characters are allowed";
+                return true;
+            }
+            if (pass == "") {
+                document.getElementById("spass1").innerHTML = "please fill the password field";
+                return false;
+            }
+            if ((pass.length <= 5) || (pass.length >= 15)) {
+                document.getElementById("spass1").innerHTML = "password length must be between 5 and 15";
+                return false;
+            }
+            if (pass != cnfpass) {
+                document.getElementById("scnfpass1").innerHTML = "your password is not match";
+                return false;
+            }
+            if (cnfpass == "") {
+                document.getElementById("scnfpass1").innerHTML = "please fill the confirm password field";
+                return false;
+            }
+            if ((cnfpass.length <= 5) || (cnfpass.length >= 15)) {
+                document.getElementById("scnfpass1").innerHTML = "confirm password length must be between 5 and 15";
+                return false;
+            }
+            if (mobile == "") {
+                document.getElementById("smob1").innerHTML = "please fill the mobile field";
+                return false;
+            }
+            if ((mobile.length != 10)) {
+                document.getElementById("smob1").innerHTML = "mobile number length must be in 10 digits";
+                return false;
+            }
+            if (mail == "") {
+                document.getElementById("smail1").innerHTML = "please fill the email field";
+                return false;
+            }
+            if (mail.indexOf('@') <= 0) {
+                document.getElementById("smail1").innerHTML = "@ at invalid position";
+                return false;
+            }
+            if ((mail.charAt(mail.length - 4) != '.') && (mail.charAt(mail.length - 3) != '.')) {
+                document.getElementById("smail1").innerHTML = ". at invalid position";
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
